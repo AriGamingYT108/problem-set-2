@@ -5,6 +5,8 @@ PART 2: PLOT EXAMPLES
 - These are the types of plots you'll code in Parts 3, 4, 5
 - NOTE: These aren't all the prettiest of plots. Pay better attention to color, formatting, and visual understandability in PARTS 3, 4, 5 and in general when making plots
 '''
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 import seaborn as sns
 import matplotlib.pyplot as plt

@@ -36,5 +36,17 @@ def extract_transform():
     # Creates two additional dataframes using groupbys
     charge_counts = arrest_events.groupby(['charge_degree']).size().reset_index(name='count')
     charge_counts_by_offense = arrest_events.groupby(['charge_degree', 'offense_category']).size().reset_index(name='count')
+
+    fta_counts = pred_universe.groupby('fta').size().reset_index(name='count')
+    fta_counts_by_sex = pred_universe.groupby(['fta', 'sex']).size().reset_index(name='count')
+
+    # 1. Build a table of whether each arrest had any felony charge
+    felony_charge = arrest_events.groupby('arrest_id')['charge_degree'].apply(lambda degs: degs.str.contains('felony', case=False, na=False).any()).reset_index(name='has_felony_charge')
+
+    # 2. Merge that flag onto your pred_universe
+    pred_merged = pred_universe.merge(felony_charge,on='arrest_id',how='left')
     
-    return pred_universe, arrest_events, charge_counts, charge_counts_by_offense
+
+
+
+    return (pred_universe, arrest_events, charge_counts, charge_counts_by_offense, fta_counts, fta_counts_by_sex, felony_charge, pred_merged)
