@@ -62,7 +62,7 @@ def catplot_nonfelony_prediction(pred_merged):
     )
     plt.savefig('./data/part4_plots/catplot_nonfelony_prediction.png', bbox_inches='tight')
 # In a print statement, answer the following question: What might explain the difference between the plots?
-# Answer: 
+    print("Non-felony rearrests occur at a different rate than felony rearrests, which is reflected in the different predicted probabilities.")
 
 # 3. Repeat the plot from 1, but hue by whether the person actually got rearrested for a felony crime
 def catplot_felony_hue_actual(pred_merged):
@@ -86,4 +86,5 @@ def catplot_felony_hue_actual(pred_merged):
 # In a print statement, answer the following question: 
 # What does it mean that prediction for arrestees with a current felony charge, 
 # but who did not get rearrested for a felony crime have a higher predicted probability than arrestees with a current misdemeanor charge, 
-# but who did get rearrested for a felony crime?
+# but who did get rearrested for a felony crime? 
+    print("The model places heavy weight on the current felony charge, even if the individual does not get rearrested for a felony crime.")

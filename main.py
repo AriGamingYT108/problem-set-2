@@ -44,9 +44,6 @@ def main():
 
     ##  PART 4: CATEGORICAL PLOTS  ##
     part4.seaborn_settings()
-
-    print(felony_charge['has_felony_charge'].value_counts())
-
     # 1
     part4.catplot_felony_prediction(pred_merged)
     # 2
@@ -55,9 +52,12 @@ def main():
     part4.catplot_felony_hue_actual(pred_merged)
 
     ##  PART 5: SCATTERPLOTS  ##
+    part5.seaborn_settings()
     # 1
-    
+    part5.scatterplot_felony_nonfelony_by_charge(pred_merged)
     # 2
+    part5.scatterplot_felony_vs_actual(pred_merged)
+
 
 
 if __name__ == "__main__":
